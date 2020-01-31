@@ -30,7 +30,7 @@ public class UsersServiceImplemention implements UserService {
     }
 
     @Override
-    public void deleteUsers(String id) {
-        ur.deleteById(id);
+    public void deleteByUserEmail(String userEmail) {
+        ur.deleteByUserEmail(userEmail);
     }
 }  
