@@ -8,10 +8,10 @@ public interface UserService {
 
     List<Users> findAll();
 
-    Users findByUserEmail(String serEmail);
+    Users findByUserEmail(String userEmail);
 
     void saveOrUpdateUsers(Users users);
 
-    void deleteUsers(String id);
+    void deleteByUserEmail(String userEmail);
 
 }
