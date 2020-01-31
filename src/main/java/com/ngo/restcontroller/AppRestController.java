@@ -118,7 +118,7 @@ public class AppRestController {
 	
 	@PutMapping(value= "/users/update/{userEmail}")
     public String update(@PathVariable(value= "userEmail") String userEmail, @RequestBody Users u) {
-    u.setUserEmail(userEmail);
+    //u.setUserEmail(userEmail);
     us.saveOrUpdateUsers(u);
     return "User record for employee-id= " + userEmail + " updated.";
     }
@@ -127,7 +127,7 @@ public class AppRestController {
 	
 	@PutMapping(value= "/admin/update/{adminEmail}")
 	public String update(@PathVariable(value= "adminEmail") String adminEmail, @RequestBody Admin a) {
-	a.setAdminEmail(adminEmail);
+	//a.setAdminEmail(adminEmail);
 	as.saveOrUpdateAdmin(a);
 	return "Admin record for adminEmail= " + adminEmail + " updated.";
 	}
@@ -136,7 +136,7 @@ public class AppRestController {
 	
 	@PutMapping(value= "/events/update/{eventName}")
 	public String update(@PathVariable(value= "eventName") String eventName, @RequestBody Event e) {
-	e.setEventName(eventName);
+	//e.setEventName(eventName);
 	es.saveOrUpdateEvent(e);
 	return "Event record for eventName= " + eventName + " updated.";
 	}
