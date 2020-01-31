@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -95,5 +96,26 @@ public class AppRestController {
 		es.saveOrUpdateEvent(event);
 		return new ResponseEntity("Event added successfully", HttpStatus.OK);
 	}
+	
+	//delete user
+	
+	@DeleteMapping(value = "/{userEmail}")
+    public void deleteUser(@PathVariable String userEmail) {
+        us.deleteUsers(us.findByUserEmail(userEmail).getId());
+    }
+	
+	//delete Admin
+	
+		@DeleteMapping(value = "/{adminEmail}")
+	    public void deleteAdmin(@PathVariable String adminEmail) {
+	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getId());
+	    }
+		
+	//delete Event
+		
+	@DeleteMapping(value = "/{eventName}")
+	    public void deleteEvent(@PathVariable String eventName) {
+	        es.deleteEvent(es.findByEventName(eventName).getId());
+	    }	
 
 }
