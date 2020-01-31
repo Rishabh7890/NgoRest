@@ -97,27 +97,27 @@ public class AppRestController {
 		return new ResponseEntity("Event added successfully", HttpStatus.OK);
 	}
 	
-//	//delete user
-//	
-//	@DeleteMapping(value = "/users/delete/{userEmail}")
-//    public void deleteUser(@PathVariable String userEmail) {
-//        us.deleteByUserEmail(us.deleteByUserEmail(userEmail));
-//    }
-//	
-//	//delete Admin
-//	
-//		@DeleteMapping(value = "/admin/delete/{adminEmail}")
-//	    public void deleteAdmin(@PathVariable String adminEmail) {
-//	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getAdminEmail());
-//	    }
-//		
-//	//delete Event
-//		
-//	@DeleteMapping(value = "/events/delete/{eventName}")
-//	    public void deleteEvent(@PathVariable String eventName) {
-//	        es.deleteEvent(es.findByEventName(eventName).getId());
-//	    }	
-//	
+	//delete user
+	
+	@DeleteMapping(value = "/users/delete/{userEmail}")
+    public void deleteUser(@PathVariable String userEmail) {
+		us.deleteUser(us.findByUserEmail(userEmail).getUserEmail());
+    }
+	
+	//delete Admin
+	
+		@DeleteMapping(value = "/admin/delete/{adminEmail}")
+	    public void deleteAdmin(@PathVariable String adminEmail) {
+	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getAdminEmail());
+	    }
+		
+	//delete Event
+		
+	@DeleteMapping(value = "/events/delete/{eventName}")
+	    public void deleteEvent(@PathVariable String eventName) {
+	        es.deleteEvent(es.findByEventName(eventName).getEventName());
+	    }	
+	
 	// update user
 	
 	@PutMapping(value= "/users/update/{userEmail}")
