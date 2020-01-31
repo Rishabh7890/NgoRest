@@ -12,6 +12,6 @@ public interface UserService {
 
     void saveOrUpdateUsers(Users users);
 
-    void deleteByUserEmail(String userEmail);
+    void deleteUser(String userEmail);
 
 }
