@@ -76,25 +76,25 @@ public class AppRestController {
 	// POST A USER
 
 	@PostMapping(value = "/users")
-	public ResponseEntity saveOrUpdateUsers(@RequestBody Users user) {
+	public ResponseEntity <String>saveOrUpdateUsers(@RequestBody Users user) {
 		us.saveOrUpdateUsers(user);
-		return new ResponseEntity("User added successfully", HttpStatus.OK);
+		return new ResponseEntity<String>("User added successfully", HttpStatus.OK);
 	}
 
 	// POST A ADMIN
 
 	@PostMapping(value = "/admin")
-	public ResponseEntity saveOrUpdateAdmin(@RequestBody Admin admin) {
+	public ResponseEntity<String> saveOrUpdateAdmin(@RequestBody Admin admin) {
 		as.saveOrUpdateAdmin(admin);
-		return new ResponseEntity("Admin added successfully", HttpStatus.OK);
+		return new ResponseEntity<String>("Admin added successfully", HttpStatus.OK);
 	}
 
 	// POST A EVENT
 
 	@PostMapping(value = "/events")
-	public ResponseEntity saveOrUpdateEvent(@RequestBody Event event) {
+	public ResponseEntity<String> saveOrUpdateEvent(@RequestBody Event event) {
 		es.saveOrUpdateEvent(event);
-		return new ResponseEntity("Event added successfully", HttpStatus.OK);
+		return new ResponseEntity<String>("Event added successfully", HttpStatus.OK);
 	}
 	
 	//delete user
