@@ -7,5 +7,6 @@ import com.ngo.beans.Event;
 public interface EventRepository extends MongoRepository<Event, String> {
 
 	public Event findByEventName(String eventName);
+	public void deleteByEventName(String eventName);
 
 }
