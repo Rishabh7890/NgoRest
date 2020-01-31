@@ -96,26 +96,26 @@ public class AppRestController {
 		es.saveOrUpdateEvent(event);
 		return new ResponseEntity("Event added successfully", HttpStatus.OK);
 	}
-	
-	//delete user
-	
+
+	// delete user
+
 	@DeleteMapping(value = "/{userEmail}")
-    public void deleteUser(@PathVariable String userEmail) {
-        us.deleteUsers(us.findByUserEmail(userEmail).getId());
-    }
-	
-	//delete Admin
-	
-		@DeleteMapping(value = "/{adminEmail}")
-	    public void deleteAdmin(@PathVariable String adminEmail) {
-	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getId());
-	    }
-		
-	//delete Event
-		
+	public void deleteUser(@PathVariable String userEmail) {
+		us.deleteUsers(us.findByUserEmail(userEmail).getId());
+	}
+
+	// delete Admin
+
+	@DeleteMapping(value = "/{adminEmail}")
+	public void deleteAdmin(@PathVariable String adminEmail) {
+		as.deleteAdmin(as.findByAdminEmail(adminEmail).getId());
+	}
+
+	// delete Event
+
 	@DeleteMapping(value = "/{eventName}")
-	    public void deleteEvent(@PathVariable String eventName) {
-	        es.deleteEvent(es.findByEventName(eventName).getId());
-	    }	
+	public void deleteEvent(@PathVariable String eventName) {
+		es.deleteEvent(es.findByEventName(eventName).getId());
+	}
 
 }
