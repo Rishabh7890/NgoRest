@@ -99,21 +99,21 @@ public class AppRestController {
 	
 	//delete user
 	
-	@DeleteMapping(value = "/{userEmail}")
+	@DeleteMapping(value = "/users/delete/{userEmail}")
     public void deleteUser(@PathVariable String userEmail) {
         us.deleteUsers(us.findByUserEmail(userEmail).getId());
     }
 	
 	//delete Admin
 	
-		@DeleteMapping(value = "/{adminEmail}")
+		@DeleteMapping(value = "/admin/delete/{adminEmail}")
 	    public void deleteAdmin(@PathVariable String adminEmail) {
 	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getId());
 	    }
 		
 	//delete Event
 		
-	@DeleteMapping(value = "/{eventName}")
+	@DeleteMapping(value = "/events/delete/{eventName}")
 	    public void deleteEvent(@PathVariable String eventName) {
 	        es.deleteEvent(es.findByEventName(eventName).getId());
 	    }	
