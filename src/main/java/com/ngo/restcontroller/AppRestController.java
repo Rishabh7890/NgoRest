@@ -106,10 +106,10 @@ public class AppRestController {
 //	
 //	//delete Admin
 //	
-//		@DeleteMapping(value = "/admin/delete/{adminEmail}")
-//	    public void deleteAdmin(@PathVariable String adminEmail) {
-//	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getAdminEmail());
-//	    }
+		@DeleteMapping(value = "/admin/delete/{adminEmail}")
+	    public void deleteAdmin(@PathVariable String adminEmail) {
+	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getAdminEmail());
+	    }
 //		
 //	//delete Event
 //		
