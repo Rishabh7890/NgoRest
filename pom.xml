@@ -13,6 +13,7 @@
 	<artifactId>NgoRest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>NgoRest</name>
+	<packaging>war</packaging>
 	<description>Backend Rest Service For NGO Project</description>
 
 	<properties>
