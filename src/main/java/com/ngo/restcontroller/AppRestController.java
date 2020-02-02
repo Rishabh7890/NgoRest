@@ -155,7 +155,7 @@ public class AppRestController {
 
 	@DeleteMapping(value = "/donations/delete/{donationId}")
 	public void deleteDonation(@PathVariable String donationId) {
-		ds.deleteDonation(ds.findByDonationId(donationId).getId());
+		ds.deleteDonation(ds.findByDonationId(donationId).getDonationId());
 	}
 
 	// update user
