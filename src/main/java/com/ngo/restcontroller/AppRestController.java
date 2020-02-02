@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ngo.beans.Admin;
+import com.ngo.beans.Donation;
 import com.ngo.beans.Event;
 import com.ngo.beans.Users;
 import com.ngo.services.AdminService;
+import com.ngo.services.DonationService;
 import com.ngo.services.EventService;
 import com.ngo.services.UserService;
 
@@ -30,6 +32,8 @@ public class AppRestController {
 	private AdminService as;
 	@Autowired
 	private EventService es;
+	@Autowired
+	private DonationService ds;
 
 	// GET ALL USERS
 
@@ -50,6 +54,20 @@ public class AppRestController {
 	@GetMapping(value = "/events")
 	public List<Event> getAllEvents() {
 		return es.findAll();
+	}
+
+	// GET ALL DONATIONS
+
+	@GetMapping(value = "/donations")
+	public List<Donation> getAllDonations() {
+		return ds.findAll();
+	}
+
+	// GET USER CART CONTAINING DONATIONS
+
+	@GetMapping(value = "/users/{userEmail}/cart")
+	public List<Donation> getCart(@PathVariable("userEmail") String userEmail) {
+		return us.findByUserEmail(userEmail).getCart();
 	}
 
 	// GET A USER BASED ON EMAIL
@@ -73,10 +91,17 @@ public class AppRestController {
 		return es.findByEventName(eventName);
 	}
 
+	// GET A DONATION BASED ON TYPE
+
+	@GetMapping(value = "/donations/{donationType}")
+	public Donation getEventByDonationType(@PathVariable("donationType") String donationType) {
+		return ds.findByDonationType(donationType);
+	}
+
 	// POST A USER
 
 	@PostMapping(value = "/users")
-	public ResponseEntity <String>saveOrUpdateUsers(@RequestBody Users user) {
+	public ResponseEntity<String> saveOrUpdateUsers(@RequestBody Users user) {
 		us.saveOrUpdateUsers(user);
 		return new ResponseEntity<String>("User added successfully", HttpStatus.OK);
 	}
@@ -96,53 +121,65 @@ public class AppRestController {
 		es.saveOrUpdateEvent(event);
 		return new ResponseEntity<String>("Event added successfully", HttpStatus.OK);
 	}
-	
-	//delete user
-	
-	@DeleteMapping(value = "/users/delete/{userEmail}")
-    public void deleteUser(@PathVariable String userEmail) {
-		us.deleteUser(us.findByUserEmail(userEmail).getUserEmail());
-    }
-	
-	//delete Admin
-	
-		@DeleteMapping(value = "/admin/delete/{adminEmail}")
-	    public void deleteAdmin(@PathVariable String adminEmail) {
-	        as.deleteAdmin(as.findByAdminEmail(adminEmail).getAdminEmail());
-	    }
-		
-	//delete Event
-		
-	@DeleteMapping(value = "/events/delete/{eventName}")
-	    public void deleteEvent(@PathVariable String eventName) {
-	        es.deleteEvent(es.findByEventName(eventName).getEventName());
-	    }	
-	
-	// update user
-	
-	@PutMapping(value= "/users/update/{userEmail}")
-    public String update(@PathVariable(value= "userEmail") String userEmail, @RequestBody Users u) {
-    //u.setUserEmail(userEmail);
-    us.saveOrUpdateUsers(u);
-    return "User record for employee-id= " + userEmail + " updated.";
-    }
-	
-	// update admin
-	
-	@PutMapping(value= "/admin/update/{adminEmail}")
-	public String update(@PathVariable(value= "adminEmail") String adminEmail, @RequestBody Admin a) {
-	//a.setAdminEmail(adminEmail);
-	as.saveOrUpdateAdmin(a);
-	return "Admin record for adminEmail= " + adminEmail + " updated.";
+
+	// POST A DONATION
+
+	@PostMapping(value = "/donations")
+	public ResponseEntity<String> saveOrUpdateDonation(@RequestBody Donation donation) {
+		ds.saveOrUpdateDonation(donation);
+		return new ResponseEntity<String>("Donation added successfully", HttpStatus.OK);
 	}
-	
+
+	// delete user
+
+	@DeleteMapping(value = "/users/delete/{userEmail}")
+	public void deleteUser(@PathVariable String userEmail) {
+		us.deleteUser(us.findByUserEmail(userEmail).getUserEmail());
+	}
+
+	// delete Admin
+
+	@DeleteMapping(value = "/admin/delete/{adminEmail}")
+	public void deleteAdmin(@PathVariable String adminEmail) {
+		as.deleteAdmin(as.findByAdminEmail(adminEmail).getAdminEmail());
+	}
+
+	// delete Event
+
+	@DeleteMapping(value = "/events/delete/{eventName}")
+	public void deleteEvent(@PathVariable String eventName) {
+		es.deleteEvent(es.findByEventName(eventName).getEventName());
+	}
+
+	// delete Donation
+
+	@DeleteMapping(value = "/donations/delete/{donationId}")
+	public void deleteDonation(@PathVariable String donationId) {
+		ds.deleteDonation(ds.findByDonationId(donationId).getId());
+	}
+
+	// update user
+
+	@PutMapping(value = "/users/update/{userEmail}")
+	public String update(@PathVariable(value = "userEmail") String userEmail, @RequestBody Users u) {
+		us.saveOrUpdateUsers(u);
+		return "User record for employee-id= " + userEmail + " updated.";
+	}
+
+	// update admin
+
+	@PutMapping(value = "/admin/update/{adminEmail}")
+	public String update(@PathVariable(value = "adminEmail") String adminEmail, @RequestBody Admin a) {
+		as.saveOrUpdateAdmin(a);
+		return "Admin record for adminEmail= " + adminEmail + " updated.";
+	}
+
 	// update event
-	
-	@PutMapping(value= "/events/update/{eventName}")
-	public String update(@PathVariable(value= "eventName") String eventName, @RequestBody Event e) {
-	//e.setEventName(eventName);
-	es.saveOrUpdateEvent(e);
-	return "Event record for eventName= " + eventName + " updated.";
+
+	@PutMapping(value = "/events/update/{eventName}")
+	public String update(@PathVariable(value = "eventName") String eventName, @RequestBody Event e) {
+		es.saveOrUpdateEvent(e);
+		return "Event record for eventName= " + eventName + " updated.";
 	}
 
 }
