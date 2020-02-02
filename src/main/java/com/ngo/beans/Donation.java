@@ -15,18 +15,18 @@ public class Donation {
 
 	}
 
-	public Donation(String id, String donationType, String donationAmount) {
-		this.donationId = id;
+	public Donation(String donationId, String donationType, String donationAmount) {
+		this.donationId = donationId;
 		this.donationType = donationType;
 		this.donationAmount = donationAmount;
 
 	}
 
-	public String getId() {
+	public String getDonationId() {
 		return donationId;
 	}
 
-	public void setId(String donationId) {
+	public void setDonationId(String donationId) {
 		this.donationId = donationId;
 	}
 
