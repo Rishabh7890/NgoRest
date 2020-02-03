@@ -30,6 +30,11 @@ public class DonationServiceImpl implements DonationService {
 	}
 
 	@Override
+	public Donation findByDonationRefEmail(String donationRefEmail) {
+		return dr.findByDonationRefEmail(donationRefEmail);
+	}
+
+	@Override
 	public void saveOrUpdateDonation(Donation donation) {
 		dr.save(donation);
 

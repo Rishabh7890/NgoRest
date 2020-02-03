@@ -98,6 +98,13 @@ public class AppRestController {
 		return ds.findByDonationType(donationType);
 	}
 
+	// GET A DONATION BASED ON REF EMAIL
+
+	@GetMapping(value = "/donations/{donationRefEmail}")
+	public Donation getEventByDonationRefEmail(@PathVariable("donationRefEmail") String donationRefEmail) {
+		return ds.findByDonationRefEmail(donationRefEmail);
+	}
+
 	// POST A USER
 
 	@PostMapping(value = "/users")

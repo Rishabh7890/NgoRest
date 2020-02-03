@@ -9,6 +9,8 @@ public interface DonationRepository extends MongoRepository<Donation, String> {
 	public Donation findByDonationType(String donationType);
 
 	public Donation findByDonationId(String donationId);
+	
+	public Donation findByDonationRefEmail(String donationRefEmail);
 
 	public void deleteByDonationId(String donationId);
 
