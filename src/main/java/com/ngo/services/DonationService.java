@@ -12,6 +12,8 @@ public interface DonationService {
 
 	Donation findByDonationId(String donationId);
 
+	Donation findByDonationRefEmail(String donationRefEmail);
+
 	void saveOrUpdateDonation(Donation donation);
 
 	void deleteDonation(String donationId);
