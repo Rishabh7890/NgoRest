@@ -11,27 +11,27 @@ import com.ngo.repos.UsersRepository;
 @Service
 public class UsersServiceImplemention implements UserService {
 
-    @Autowired
-    private UsersRepository ur;
+	@Autowired
+	private UsersRepository ur;
 
-    @Override
-    public List<Users> findAll() {
-        return ur.findAll();
-    }
+	@Override
+	public List<Users> findAll() {
+		return ur.findAll();
+	}
 
-    @Override
-    public Users findByUserEmail(String userEmail) {
-        return ur.findByUserEmail(userEmail);
-    }
-    
-    @Override
-    public void saveOrUpdateUsers(Users users) {
-        ur.save(users);
-    }
+	@Override
+	public Users findByScreenName(String screenName) {
+		return ur.findByScreenName(screenName);
+	}
 
-    @Override
-	public void deleteUser(String userEmail) {
-		ur.deleteByUserEmail(userEmail);
+	@Override
+	public void saveOrUpdateUsers(Users users) {
+		ur.save(users);
+	}
+
+	@Override
+	public void deleteUser(String screenName) {
+		ur.deleteByScreenName(screenName);
 
 	}
-}  
+}
