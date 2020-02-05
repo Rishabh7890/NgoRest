@@ -38,7 +38,7 @@ public class AppRestController {
 
 	// GET ALL USERS
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/users")
 	public List<Users> getAllUsers() {
 		return us.findAll();
@@ -46,7 +46,7 @@ public class AppRestController {
 
 	// GET ALL ADMINS
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/admin")
 	public List<Admin> getAllAdmins() {
 		return as.findAll();
@@ -54,7 +54,7 @@ public class AppRestController {
 
 	// GET ALL EVENTS
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/events")
 	public List<Event> getAllEvents() {
 		return es.findAll();
@@ -62,7 +62,7 @@ public class AppRestController {
 
 	// GET ALL DONATIONS
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/donations")
 	public List<Donation> getAllDonations() {
 		return ds.findAll();
@@ -70,23 +70,23 @@ public class AppRestController {
 
 	// GET USER CART CONTAINING DONATIONS
 
-	@CrossOrigin("http://localhost:3000")
-	@GetMapping(value = "/users/{userEmail}/cart")
-	public List<Donation> getCart(@PathVariable("userEmail") String userEmail) {
-		return us.findByUserEmail(userEmail).getCart();
+	@CrossOrigin("http://127.0.0.1:3000")
+	@GetMapping(value = "/users/{screenName}/cart")
+	public List<Donation> getCart(@PathVariable("screenName") String screenName) {
+		return us.findByScreenName(screenName).getCart();
 	}
 
 	// GET A USER BASED ON EMAIL
 
-	@CrossOrigin("http://localhost:3000")
-	@GetMapping(value = "/users/{userEmail}")
-	public Users getUserByUserEmail(@PathVariable("userEmail") String userEmail) {
-		return us.findByUserEmail(userEmail);
+	@CrossOrigin("http://127.0.0.1:3000")
+	@GetMapping(value = "/users/{screenName}")
+	public Users getUserByScreenName(@PathVariable("screenName") String screenName) {
+		return us.findByScreenName(screenName);
 	}
 
 	// GET A ADMIN BASED ON EMAIL
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/admin/{adminEmail}")
 	public Admin getAdminByAdminEmail(@PathVariable("adminEmail") String adminEmail) {
 		return as.findByAdminEmail(adminEmail);
@@ -94,7 +94,7 @@ public class AppRestController {
 
 	// GET AN EVENT BASED ON NAME
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/events/{eventName}")
 	public Event getEventByEventName(@PathVariable("eventName") String eventName) {
 		return es.findByEventName(eventName);
@@ -102,7 +102,7 @@ public class AppRestController {
 
 	// GET A DONATION BASED ON TYPE
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/donations/{donationType}")
 	public Donation getEventByDonationType(@PathVariable("donationType") String donationType) {
 		return ds.findByDonationType(donationType);
@@ -110,7 +110,7 @@ public class AppRestController {
 
 	// GET A DONATION BASED ON REF EMAIL
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@GetMapping(value = "/donations/{donationRefEmail}")
 	public Donation getEventByDonationRefEmail(@PathVariable("donationRefEmail") String donationRefEmail) {
 		return ds.findByDonationRefEmail(donationRefEmail);
@@ -118,7 +118,7 @@ public class AppRestController {
 
 	// POST A USER
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@PostMapping(value = "/users")
 	public ResponseEntity<String> saveOrUpdateUsers(@RequestBody Users user) {
 		us.saveOrUpdateUsers(user);
@@ -127,7 +127,7 @@ public class AppRestController {
 
 	// POST A ADMIN
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@PostMapping(value = "/admin")
 	public ResponseEntity<String> saveOrUpdateAdmin(@RequestBody Admin admin) {
 		as.saveOrUpdateAdmin(admin);
@@ -136,7 +136,7 @@ public class AppRestController {
 
 	// POST A EVENT
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@PostMapping(value = "/events")
 	public ResponseEntity<String> saveOrUpdateEvent(@RequestBody Event event) {
 		es.saveOrUpdateEvent(event);
@@ -145,7 +145,7 @@ public class AppRestController {
 
 	// POST A DONATION
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@PostMapping(value = "/donations")
 	public ResponseEntity<String> saveOrUpdateDonation(@RequestBody Donation donation) {
 		ds.saveOrUpdateDonation(donation);
@@ -154,15 +154,15 @@ public class AppRestController {
 
 	// delete user
 
-	@CrossOrigin("http://localhost:3000")
-	@DeleteMapping(value = "/users/delete/{userEmail}")
-	public void deleteUser(@PathVariable String userEmail) {
-		us.deleteUser(us.findByUserEmail(userEmail).getUserEmail());
+	@CrossOrigin("http://127.0.0.1:3000")
+	@DeleteMapping(value = "/users/delete/{screenName}")
+	public void deleteUser(@PathVariable String screenName) {
+		us.deleteUser(us.findByScreenName(screenName).getScreenName());
 	}
 
 	// delete Admin
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@DeleteMapping(value = "/admin/delete/{adminEmail}")
 	public void deleteAdmin(@PathVariable String adminEmail) {
 		as.deleteAdmin(as.findByAdminEmail(adminEmail).getAdminEmail());
@@ -170,7 +170,7 @@ public class AppRestController {
 
 	// delete Event
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@DeleteMapping(value = "/events/delete/{eventName}")
 	public void deleteEvent(@PathVariable String eventName) {
 		es.deleteEvent(es.findByEventName(eventName).getEventName());
@@ -178,7 +178,7 @@ public class AppRestController {
 
 	// delete Donation
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@DeleteMapping(value = "/donations/delete/{donationId}")
 	public void deleteDonation(@PathVariable String donationId) {
 		ds.deleteDonation(ds.findByDonationId(donationId).getDonationId());
@@ -186,7 +186,7 @@ public class AppRestController {
 
 	// update user
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@PutMapping(value = "/users/update/{userEmail}")
 	public String update(@PathVariable(value = "userEmail") String userEmail, @RequestBody Users u) {
 		us.saveOrUpdateUsers(u);
@@ -195,7 +195,7 @@ public class AppRestController {
 
 	// update admin
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@PutMapping(value = "/admin/update/{adminEmail}")
 	public String update(@PathVariable(value = "adminEmail") String adminEmail, @RequestBody Admin a) {
 		as.saveOrUpdateAdmin(a);
@@ -204,7 +204,7 @@ public class AppRestController {
 
 	// update event
 
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:3000")
 	@PutMapping(value = "/events/update/{eventName}")
 	public String update(@PathVariable(value = "eventName") String eventName, @RequestBody Event e) {
 		es.saveOrUpdateEvent(e);

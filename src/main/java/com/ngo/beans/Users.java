@@ -9,9 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Users {
 	@Id
 	private String id;
-	private String userFname;
-	private String userLname;
-	private String userEmail;
+	private String name;
+	private String screenName;
+	private String twitterId;
 	private String userPassword;
 	private List<Donation> cart;
 
@@ -19,15 +19,37 @@ public class Users {
 
 	}
 
-	public Users(String id, String userFname, String userLname, String userEmail, String userPassword,
-			List<Donation> cart) {
+	public Users(String id, String name, String screenName, String twitterId, List<Donation> cart) {
 		super();
 		this.id = id;
-		this.userFname = userFname;
-		this.userLname = userLname;
-		this.userEmail = userEmail;
-		this.userPassword = userPassword;
+		this.name = name;
+		this.screenName = screenName;
+		this.twitterId = twitterId;
 		this.cart = cart;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getScreenName() {
+		return screenName;
+	}
+
+	public void setScreenName(String screenName) {
+		this.screenName = screenName;
+	}
+
+	public String getTwitterId() {
+		return twitterId;
+	}
+
+	public void setTwitterId(String twitterId) {
+		this.twitterId = twitterId;
 	}
 
 	public String getId() {
@@ -36,30 +58,6 @@ public class Users {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getUserFname() {
-		return userFname;
-	}
-
-	public void setUserFname(String userFname) {
-		this.userFname = userFname;
-	}
-
-	public String getUserLname() {
-		return userLname;
-	}
-
-	public void setUserLname(String userLname) {
-		this.userLname = userLname;
-	}
-
-	public String getUserEmail() {
-		return userEmail;
-	}
-
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
 	}
 
 	public String getUserPassword() {
